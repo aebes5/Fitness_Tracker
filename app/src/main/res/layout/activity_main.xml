@@ -16,28 +16,80 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_menu"
-            android:textSize="50dp"
+            android:textSize="50sp"
+            android:paddingTop="30dp"
             android:paddingBottom="40dp"
             android:layout_gravity="center"/>
 
-
-        <Button
-            android:id="@+id/buttonWorkoutTracker"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/workout_tracker" />
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-        <Button
-            android:id="@+id/buttonCalorieTracker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/calorie_counter" />
+            <Button
+                android:id="@+id/buttonWorkoutTracker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/workout_tracker"
+                android:layout_margin="2dp"/>
 
-        <Button
-            android:id="@+id/buttonSettings"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/buttonCalorieTracker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/calorie_counter"
+                android:layout_margin="2dp"/>
+
+            <Button
+                android:id="@+id/buttonSettings"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:text="@string/settings"
+                android:layout_margin="2dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/settings" />
+            android:text="Welcome, User!"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/textViewWorkoutsThisWeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Workouts This Week: 1"
+            android:textSize="22sp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewCaloriesBurned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calories Burned: 500"
+            android:textSize="22sp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewCaloriesGained"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calories Gained: 800"
+            android:textSize="22sp"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
