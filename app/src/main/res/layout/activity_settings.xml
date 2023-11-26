@@ -14,8 +14,9 @@
         android:text="@string/main_menu"
         android:layout_gravity="start"
         android:textSize="18sp"
+        android:padding="8dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#1481BA"/>
+        android:background="@drawable/round_button" />
 
     <TextView
         android:id="@+id/textSettings"
@@ -196,6 +197,6 @@
         android:textSize="20sp"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:backgroundTint="#1481BA"/>
+        android:background="@drawable/round_button" />
 
 </LinearLayout>
