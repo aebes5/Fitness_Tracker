@@ -14,7 +14,8 @@
         android:text="@string/main_menu"
         android:layout_gravity="start"
         android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#1481BA"/>
 
     <TextView
         android:id="@+id/textWorkoutTracker"
@@ -36,7 +37,6 @@
             android:prompt="@string/select_exercise_type"
             android:entries="@array/exercise_types" />
 
-        <!-- Duration Input -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,6 +71,7 @@
             android:text="@string/add_workout"
             android:textSize="20sp"
             android:scaleX="1.5"
-            android:scaleY="1.5" />
+            android:scaleY="1.5"
+            android:backgroundTint="#1481BA"/>
 
 </LinearLayout>

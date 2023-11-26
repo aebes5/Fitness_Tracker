@@ -14,7 +14,8 @@
         android:text="@string/main_menu"
         android:layout_gravity="start"
         android:textSize="18sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#1481BA"/>
 
     <TextView
         android:id="@+id/textSettings"
@@ -194,6 +195,7 @@
         android:layout_gravity="center"
         android:textSize="20sp"
         android:scaleX="1.5"
-        android:scaleY="1.5"/>
+        android:scaleY="1.5"
+        android:backgroundTint="#1481BA"/>
 
 </LinearLayout>

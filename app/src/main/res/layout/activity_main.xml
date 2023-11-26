@@ -34,7 +34,8 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:text="@string/workout_tracker"
-                android:layout_margin="2dp"/>
+                android:layout_margin="2dp"
+                android:backgroundTint="#1481BA" />
 
             <Button
                 android:id="@+id/buttonCalorieTracker"
@@ -43,7 +44,8 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:text="@string/calorie_counter"
-                android:layout_margin="2dp"/>
+                android:layout_margin="2dp"
+                android:backgroundTint="#1481BA"/>
 
             <Button
                 android:id="@+id/buttonSettings"
@@ -52,7 +54,8 @@
                 android:layout_weight="1"
                 android:textSize="18sp"
                 android:text="@string/settings"
-                android:layout_margin="2dp"/>
+                android:layout_margin="2dp"
+                android:backgroundTint="#1481BA"/>
 
         </LinearLayout>
 
