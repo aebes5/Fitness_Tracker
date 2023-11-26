@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Seguimiento de Fitness</string>
+    <string name="calorie_counter">Contador de Calorías</string>
+    <string name="workout_tracker">Seguimiento de Ejercicios</string>
+    <string name="settings">Configuración</string>
+    <string name="main_menu">Menú Principal</string>
+    <string name="buttonMainMenu">Menú Principal</string>
+
+<!-- Workouts -->
+    <string name="select_exercise_type">Seleccionar Tipo de Ejercicio</string>
+    <string-array name="exercise_types">
+        <item>Seleccionar Tipo de Ejercicio</item>
+        <item>Cardio</item>
+        <item>Entrenamiento de Fuerza</item>
+    </string-array>
+    <string name="enter_duration">Ingresar Duración</string>
+    <string name="duration">Duración (min)</string>
+    <string name="add_workout">Agregar Ejercicio</string>
+
+<!-- Calories -->
+    <string name="food_type">Ingresar Tipo de Comida</string>
+    <string name="calorie_count">Ingresar Número de Calorías</string>
+    <string name="add_food">Agregar Entrada de Comida</string>
+    <string name="calories">Calorías</string>
+
+<!--  Settings -->
+    <string name="sex">Género</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
+    <string name="mode">Modo Claro/Oscuro</string>
+    <string name="units">Unidades</string>
+    <string name="imperial">Imperial</string>
+    <string name="metric">Métrico</string>
+    <string name="age">Edad</string>
+    <string name="name">Nombre</string>
+    <string name="save">Guardar</string>
+</resources>
