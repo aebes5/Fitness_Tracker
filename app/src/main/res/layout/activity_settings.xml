@@ -1,6 +1,5 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings"
-        android:textSize="50dp"
+        android:textSize="40sp"
         android:paddingBottom="40dp"
         android:layout_gravity="center"/>
 
@@ -40,7 +39,7 @@
             android:layout_weight="1"
             android:layout_gravity="start"
             android:text="@string/name"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
         <EditText
             android:id="@+id/editTextName"
@@ -48,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="text"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
@@ -67,7 +66,7 @@
             android:layout_weight="1"
             android:layout_gravity="start"
             android:text="@string/age"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
         <EditText
             android:id="@+id/editTextAge"
@@ -75,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:inputType="number"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
@@ -92,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/sex"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:layout_gravity="start"/>
 
         <RadioGroup
@@ -106,14 +105,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                android:textSize="18dp"/>
+                android:textSize="18sp"/>
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                android:textSize="18dp"/>
+                android:textSize="18sp"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -131,7 +130,7 @@
             android:layout_weight="1"
             android:text="@string/units"
             android:layout_gravity="start"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
         <RadioGroup
             android:id="@+id/radioGroupUnits"
@@ -144,14 +143,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/imperial"
-                android:textSize="18dp"/>
+                android:textSize="18sp"/>
 
             <RadioButton
                 android:id="@+id/radioButtonMetric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/metric"
-                android:textSize="18dp"/>
+                android:textSize="18sp"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -171,7 +170,7 @@
             android:layout_weight="1"
             android:layout_gravity="start"
             android:text="@string/mode"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
         <Switch
             android:id="@+id/switchDarkMode"
@@ -192,7 +191,7 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:layout_gravity="center"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:scaleX="1.5"
         android:scaleY="1.5"/>
 

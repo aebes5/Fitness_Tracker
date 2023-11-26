@@ -1,12 +1,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".SettingsActivity">
+    tools:context=".WorkoutTrackerActivity">
 
     <Button
         android:id="@+id/buttonMainMenu"
@@ -21,8 +20,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/workout_tracker"
-        android:textSize="50dp"
+        android:textSize="40sp"
         android:paddingBottom="40dp"
         android:layout_gravity="center"/>
+
+        <!-- Exercise Type Selection -->
+        <Spinner
+            android:id="@+id/spinnerExerciseType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:prompt="@string/select_exercise_type"
+            android:entries="@array/exercise_types" />
+
+        <!-- Duration Input -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="start"
+                android:text="@string/duration"
+                android:textSize="30sp"/>
+
+            <EditText
+                android:id="@+id/editTextDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:inputType="number"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAddWorkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/add_workout"
+            android:textSize="20sp"
+            android:scaleX="1.5"
+            android:scaleY="1.5" />
 
 </LinearLayout>
