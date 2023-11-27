@@ -1,29 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".CalorieTrackerActivity">
+
+    <Button
+        android:id="@+id/buttonMainMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_menu"
+        android:layout_gravity="start"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/round_button" />
+
+    <TextView
+        android:id="@+id/textCalorieTracker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calorie_counter"
+        android:textSize="40sp"
+        android:paddingBottom="40dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+        android:id="@+id/editTextFoodType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/food_type" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="20dp">
 
         <TextView
-            android:id="@+id/textCalorieTracker"
-            android:layout_width="wrap_content"
+            android:id="@+id/calories"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/calorie_tracker" />
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            android:text="@string/calories"
+            android:textSize="30sp"/>
 
-        <Button
-            android:id="@+id/buttonMainMenu"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextCalories"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/main_menu" />
-
+            android:layout_weight="1"
+            android:inputType="number"
+            android:textSize="30sp"/>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnAddFoodEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/add_food"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:padding="8dp"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:background="@drawable/round_button" />
+
+</LinearLayout>
