@@ -1,10 +1,11 @@
 package com.example.fitnesstracker;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.fitnesstracker.databinding.ActivityMainBinding;
 
@@ -19,9 +20,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+        TextView displayNameTextView = findViewById(R.id.textViewWelcome);
+        String storedName = sharedPreferences.getString("name", "");
+
+        displayNameTextView.setText(!storedName.isEmpty()
+                ? "Welcome, " + storedName + "!"
+                : "Welcome!");
 
         //reference buttons
-
         binding.buttonWorkoutTracker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -74,7 +74,7 @@
             android:id="@+id/textViewWorkoutsThisWeek"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Workouts This Week: 1"
+            android:text="Workouts This Week: 0"
             android:textSize="22sp"
             android:layout_marginBottom="20dp"/>
 
@@ -83,7 +83,7 @@
             android:id="@+id/textViewCaloriesBurned"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories Burned: 500"
+            android:text="Calories Burned: 0"
             android:textSize="22sp"
             android:layout_marginBottom="20dp"/>
 
@@ -92,7 +92,7 @@
             android:id="@+id/textViewCaloriesGained"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories Gained: 800"
+            android:text="Calories Gained: 0"
             android:textSize="22sp"/>
 
     </LinearLayout>
