@@ -1,7 +1,10 @@
 package com.example.fitnesstracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
@@ -15,6 +18,7 @@ public class WorkoutTrackerActivity extends AppCompatActivity {
 
     private ActivityWorkoutTrackerBinding binding; //binding object
     private ArrayList<Workout> workouts;
+    private WorkoutAdapter workoutAdapter;
 
     //view binding enabled
 
@@ -25,7 +29,13 @@ public class WorkoutTrackerActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         workouts = new ArrayList<Workout>();
 
-        //reference button
+        workoutAdapter = new WorkoutAdapter(this, workouts);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        binding.content.recyclerView.setLayoutManager(layoutManager);
+        binding.content.recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        binding.content.recyclerView.setAdapter(workoutAdapter);
+
 
         binding.buttonMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +65,7 @@ public class WorkoutTrackerActivity extends AppCompatActivity {
 
     public void addWorkoutToList(Workout workout){
         workouts.add(workout);
+        workoutAdapter.notifyDataSetChanged();
     }
 
 }

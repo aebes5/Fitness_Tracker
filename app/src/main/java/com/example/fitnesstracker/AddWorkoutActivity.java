@@ -51,20 +51,16 @@ public class AddWorkoutActivity extends DialogFragment {
 
     public void save(){
         String name = binding.editTextText.getText().toString();
+        int duration = Integer.parseInt(binding.editTextText2.getText().toString());
         String type = "";
-        if(binding.radioButton.isChecked()){
-            type = "Back";
-        }
-        if(binding.radioButton2.isChecked()){
-            type = "Legs";
-        }
+
         if(binding.radioButton3.isChecked()){
-            type = "Arms";
+            type = "Cardio";
         }
-        if(binding.radioButton.isChecked()){
-            type = "Chest";
+        else if(binding.radioButton4.isChecked()){
+            type = "Strength Training";
         }
-        Workout workout = new Workout(name, type);
+        Workout workout = new Workout(name, type, duration);
         WorkoutTrackerActivity workoutTracker = (WorkoutTrackerActivity)getActivity();
         workoutTracker.addWorkoutToList(workout);
         dismiss();
