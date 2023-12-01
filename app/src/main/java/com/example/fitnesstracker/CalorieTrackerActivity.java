@@ -1,19 +1,25 @@
 package com.example.fitnesstracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.content.Intent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.fitnesstracker.databinding.ActivityCalorieTrackerBinding;
 
+import java.util.ArrayList;
 
-public class CalorieTrackerActivity extends AppCompatActivity {
+public class CalorieTrackerActivity extends AppCompatActivity implements FoodAdapter.OnContactClickListener {
 
-    private ActivityCalorieTrackerBinding binding; //binding object
-
-    //view binding enabled
+    private ActivityCalorieTrackerBinding binding;
+    private FoodAdapter foodAdapter;
+    private ArrayList<FoodItem> foodItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +27,26 @@ public class CalorieTrackerActivity extends AppCompatActivity {
         binding = ActivityCalorieTrackerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //reference button
+        foodItemList = new ArrayList<>(); // Initialize foodItemList
+        foodAdapter = new FoodAdapter(foodItemList, this); // Pass foodItemList and context
 
-        binding.buttonMainMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMainActivity();
-            }
-        });
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        binding.content.recyclerView.setLayoutManager(layoutManager);
+        binding.content.recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        binding.content.recyclerView.setAdapter(foodAdapter);
     }
 
-    //open activity
-
-    public void openMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void addFood(View view) {
+        // Implement logic to add food item
+        // For example, open a dialog or activity to add a food item
+        // Once added, update the foodItemList and notify the adapter
     }
+
+    // Implement this method from FoodAdapter.OnContactClickListener interface
+    @Override
+    public void onContactClick(int position) {
+        // Handle item click events here if needed
+    }
+
+
 }
