@@ -1,58 +1,66 @@
 package com.example.fitnesstracker;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class AddFood extends AppCompatDialogFragment {
-    private EditText editTextFoodName;
-    private EditText editTextCalories;
-    private AddFoodListener listener;
 
-    @NonNull
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
+
+import com.example.fitnesstracker.databinding.ActivityAddFoodBinding;
+import com.example.fitnesstracker.databinding.ActivityAddWorkoutBinding;
+
+public class AddFood extends DialogFragment {
+
+    private ActivityAddFoodBinding binding;
+
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.activity_add_food, null);
+    public Dialog onCreateDialog (Bundle savedInstanceState) {
 
-        editTextFoodName = view.findViewById(R.id.editTextName);
-        editTextCalories = view.findViewById(R.id.editTextCalories);
+        binding = ActivityAddFoodBinding.inflate(LayoutInflater.from(getContext()));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(binding.getRoot());
+
+        binding.clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clear();
+            }
+        });
+
+        binding.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                save();
+                dismiss();
+
+            }
+        });
 
 
         return builder.create();
     }
 
-    private void addFoodItem() {
-        String foodName = editTextFoodName.getText().toString().trim();
-        String calories = editTextCalories.getText().toString().trim();
+    public void save(){
+        String name = binding.editTextName.getText().toString();
+        String calories = binding.editTextCalories.getText().toString();
 
-        if (!foodName.isEmpty()) {
-            listener.onFoodAdded(new FoodItem(foodName, calories));
-            dismiss();
-        } else {
-            // Handle empty input or show an error message
-        }
+        FoodItem foodItem = new FoodItem(name, calories);
+        CalorieTrackerActivity calorieTrackerActivity = (CalorieTrackerActivity) getActivity();
+        calorieTrackerActivity.addFood(foodItem);
+        dismiss();
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        try {
-            listener = (AddFoodListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement AddFoodListener");
-        }
-    }
-
-    public interface AddFoodListener {
-        void onFoodAdded(FoodItem foodItem);
+    public void clear(){
+        binding.editTextName.setText("");
+        binding.editTextCalories.setText("");
     }
 }

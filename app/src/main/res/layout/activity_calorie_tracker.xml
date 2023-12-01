@@ -6,7 +6,7 @@
     tools:context=".WorkoutTrackerActivity">
 
     <Button
-        android:id="@+id/buttonAddWorkout"
+        android:id="@+id/buttonAddFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -14,7 +14,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/round_button"
         android:padding="8dp"
-        android:text="Add A Workout +"
+        android:text="Add A Food +"
         android:textSize="18sp" />
 
     <Button
@@ -37,15 +37,6 @@
         android:layout_height="match_parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
-
-    <!-- Exercise Type Selection -->
-
-    <!-- Duration Input -->
 
 </LinearLayout>
 
