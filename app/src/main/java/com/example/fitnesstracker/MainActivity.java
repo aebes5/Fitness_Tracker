@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
         TextView displayNameTextView = findViewById(R.id.textViewWelcome);
         String storedName = sharedPreferences.getString("name", "");
 
-        displayNameTextView.setText(!storedName.isEmpty()
-                ? "Welcome, " + storedName + "!"
-                : "Welcome!");
+        if (!storedName.isEmpty()) {
+            displayNameTextView.setText("Welcome, " + storedName + "!");
+        } else {
+            displayNameTextView.setText("Welcome!");
+        }
 
         //reference buttons
         binding.buttonWorkoutTracker.setOnClickListener(new View.OnClickListener() {
