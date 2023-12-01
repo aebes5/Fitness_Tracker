@@ -15,18 +15,18 @@ import java.util.ArrayList;
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder> {
 
     private ArrayList<FoodItem> foodItemList;
-    private OnContactClickListener mListener;
+    private OnFoodClickListener mListener;
 
-    public FoodAdapter(ArrayList<FoodItem> foodItemList, OnContactClickListener listener) {
+    public FoodAdapter(ArrayList<FoodItem> foodItemList, OnFoodClickListener listener) {
         this.foodItemList = foodItemList;
         this.mListener = listener;
     }
 
-    public interface OnContactClickListener {
-        void onContactClick(int position);
+    public interface OnFoodClickListener {
+        void onFoodClick(int position);
     }
 
-    public void setOnContactClickListener(OnContactClickListener listener) {
+    public void setOnContactClickListener(OnFoodClickListener listener) {
         mListener = listener;
     }
 
@@ -66,7 +66,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
         @Override
         public void onClick(View view) {
             if (mListener != null) {
-                mListener.onContactClick(getAdapterPosition());
+                mListener.onFoodClick(getAdapterPosition());
             }
         }
     }
