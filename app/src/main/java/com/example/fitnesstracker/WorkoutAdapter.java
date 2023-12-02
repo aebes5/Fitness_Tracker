@@ -1,16 +1,9 @@
 package com.example.fitnesstracker;
 
-import  androidx.fragment.app.FragmentActivity;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.os.Bundle;
-import android.net.Uri;
 
 
 import androidx.annotation.NonNull;
@@ -20,14 +13,14 @@ import java.util.ArrayList;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItemHolder>{
 
-    private WorkoutTrackerActivity workoutActivity;
+    private WorkoutTracker workoutActivity;
     private ArrayList<Workout> list;
 
-    public WorkoutAdapter (WorkoutTrackerActivity workoutActivity, ArrayList<Workout> list) {
+    public WorkoutAdapter(WorkoutTracker workoutActivity, ArrayList<Workout> list) {
         this.workoutActivity = workoutActivity;
-        this.list = list;
-
+        this.list = (list != null) ? list : new ArrayList<>(); // Initialize if null
     }
+
     @NonNull
     @Override
     public WorkoutAdapter.ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,7 +55,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return (list != null) ? list.size() : 0; // Return 0 if list is null
     }
 
     public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

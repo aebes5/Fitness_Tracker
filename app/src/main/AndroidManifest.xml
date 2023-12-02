@@ -16,7 +16,7 @@
             android:name=".AddFood"
             android:exported="false" />
         <activity
-            android:name=".AddWorkoutActivity"
+            android:name=".AddWorkout"
             android:exported="false"
             android:label="@string/title_activity_add_workout"
             android:theme="@style/AppTheme" />
@@ -24,10 +24,10 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".CalorieTrackerActivity"
+            android:name=".CalorieTracker"
             android:exported="false" />
         <activity
-            android:name=".WorkoutTrackerActivity"
+            android:name=".WorkoutTracker"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

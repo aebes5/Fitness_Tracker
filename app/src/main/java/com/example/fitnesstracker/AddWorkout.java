@@ -1,23 +1,18 @@
 package com.example.fitnesstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.fitnesstracker.databinding.ActivityAddWorkoutBinding;
 
-public class AddWorkoutActivity extends DialogFragment {
+public class AddWorkout extends DialogFragment {
 
     private ActivityAddWorkoutBinding binding;
 
@@ -61,7 +56,7 @@ public class AddWorkoutActivity extends DialogFragment {
             type = "Strength Training";
         }
         Workout workout = new Workout(name, type, duration);
-        WorkoutTrackerActivity workoutTracker = (WorkoutTrackerActivity)getActivity();
+        WorkoutTracker workoutTracker = (WorkoutTracker)getActivity();
         workoutTracker.addWorkoutToList(workout);
         dismiss();
     }

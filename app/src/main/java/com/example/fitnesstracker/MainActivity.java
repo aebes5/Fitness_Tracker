@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
     //open activities
     public void openWorkoutTrackerActivity() {
-        Intent intent = new Intent(this, WorkoutTrackerActivity.class);
+        Intent intent = new Intent(this, WorkoutTracker.class);
         startActivity(intent);
     }
 
 
     public void openCalorieTrackerActivity() {
-        Intent intent = new Intent(this, CalorieTrackerActivity.class);
+        Intent intent = new Intent(this, CalorieTracker.class);
         startActivity(intent);
     }
 
