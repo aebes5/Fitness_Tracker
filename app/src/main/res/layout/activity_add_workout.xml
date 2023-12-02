@@ -74,28 +74,38 @@
                     android:id="@+id/radioButton4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Chest" />
+                    android:text="Strength Training" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Arms" />
+                    android:text="Cardio" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Legs" />
-
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Back" />
             </RadioGroup>
         </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp">
 
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Duration (mins):" />
+
+            <EditText
+                android:id="@+id/editTextText2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="text"
+                android:text="25" />
+
+        </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
