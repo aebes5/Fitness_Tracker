@@ -92,7 +92,7 @@ public class WorkoutTracker extends AppCompatActivity {
         saveWorkoutsToSharedPreferences(workouts);
     }
 
-    private void saveWorkoutsToSharedPreferences(ArrayList<Workout> workouts) {
+    void saveWorkoutsToSharedPreferences(ArrayList<Workout> workouts) {
         // Use SharedPreferences to store the workouts
         SharedPreferences sharedPreferences = getSharedPreferences("workouts", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
