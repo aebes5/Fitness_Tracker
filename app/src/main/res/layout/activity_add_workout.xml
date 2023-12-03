@@ -28,7 +28,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="ADD WORKOUT" />
+                android:fontFamily="serif"
+                android:text="ADD WORKOUT"
+                android:textColor="#123F9A"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -40,10 +44,12 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name of Workout:"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:fontFamily="serif"
+                android:textColor="#123F9A"
+                android:text="Name of Workout:" />
 
             <EditText
                 android:id="@+id/editTextText"
@@ -51,7 +57,8 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="workout" />
+                android:text="workout"
+                android:fontFamily="serif"/>
         </TableRow>
 
         <TableRow
@@ -64,7 +71,9 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type of workout:" />
+                android:fontFamily="serif"
+                android:text="Type of workout:"
+                android:textColor="#123F9A" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -74,13 +83,15 @@
                     android:id="@+id/radioButton4"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Strength Training" />
+                    android:text="Strength Training"
+                    android:fontFamily="serif"/>
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Cardio" />
+                    android:text="Cardio"
+                    android:fontFamily="serif"/>
 
             </RadioGroup>
         </TableRow>
@@ -95,7 +106,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
-                android:text="Duration (mins):" />
+                android:fontFamily="serif"
+                android:text="Duration (mins):"
+                android:textColor="#123F9A" />
 
             <EditText
                 android:id="@+id/editTextText2"
@@ -103,7 +116,8 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="25" />
+                android:text="25"
+                android:fontFamily="serif"/>
 
         </TableRow>
         <TableRow
@@ -116,12 +130,19 @@
                 android:id="@+id/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_button"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="8dp"
                 android:text="Clear" />
 
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="8dp"
                 android:text="Save" />
         </TableRow>
     </TableLayout>
