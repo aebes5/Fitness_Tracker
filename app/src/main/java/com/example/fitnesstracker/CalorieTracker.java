@@ -80,6 +80,10 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
         startActivity(intent);
     }
 
+    public void saveFoodItems(ArrayList<FoodItem> foodItems) {
+        saveFoodItemsToSharedPreferences(foodItems);
+    }
+
     private void saveFoodItemsToSharedPreferences(ArrayList<FoodItem> foodItems) {
         SharedPreferences sharedPreferences = getSharedPreferences("foodItems", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

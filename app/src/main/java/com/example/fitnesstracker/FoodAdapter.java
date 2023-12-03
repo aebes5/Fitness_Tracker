@@ -6,17 +6,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder> {
 
     private ArrayList<FoodItem> foodItemList;
     private OnFoodClickListener mListener;
+    private CalorieTracker calorieTracker;
 
     public FoodAdapter(ArrayList<FoodItem> foodItemList, OnFoodClickListener listener) {
         this.foodItemList = foodItemList;
         this.mListener = listener;
+        this.calorieTracker = calorieTracker;
     }
 
     public interface OnFoodClickListener {
@@ -47,6 +48,21 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
     @Override
     public int getItemCount() {
         return foodItemList.size();
+    }
+
+    private void deleteItem(int position) {
+        if (position != RecyclerView.NO_POSITION) {
+            FoodItem deletedFoodItem = foodItemList.get(position);
+
+            foodItemList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, getItemCount());
+
+            // Update the food items in SharedPreferences after deletion
+            if (calorieTracker != null) {
+                calorieTracker.saveFoodItems(foodItemList);
+            }
+        }
     }
 
     public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
