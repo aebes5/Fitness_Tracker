@@ -8,9 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.fitnesstracker.databinding.ActivitySettingsBinding;
 
 public class Settings extends AppCompatActivity {
@@ -26,6 +24,7 @@ public class Settings extends AppCompatActivity {
         // Reference UI elements
         EditText editTextName = binding.editTextName;
         EditText editTextAge = binding.editTextAge;
+        EditText editTextWeight = binding.editTextWeight;
         RadioGroup radioGroupSex = binding.radioGroupSex;
         RadioGroup radioGroupUnits = binding.radioGroupUnits;
         Switch switchDarkMode = binding.switchDarkMode;
@@ -33,31 +32,24 @@ public class Settings extends AppCompatActivity {
         // Load settings from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        // Load name
         editTextName.setText(sharedPreferences.getString("name", ""));
-
-        // Load age
         editTextAge.setText(String.valueOf(sharedPreferences.getInt("age", 0)));
+        editTextWeight.setText(String.valueOf(sharedPreferences.getInt("weight", 0)));
 
-        // Load sex
         String sex = sharedPreferences.getString("sex", "");
-        // Set the selected radio button based on the loaded value
         if (sex.equals(getString(R.string.male))) {
             radioGroupSex.check(R.id.radioButtonMale);
         } else if (sex.equals(getString(R.string.female))) {
             radioGroupSex.check(R.id.radioButtonFemale);
         }
 
-        // Load units
         String units = sharedPreferences.getString("units", "");
-        // Set the selected radio button based on the loaded value
         if (units.equals(getString(R.string.imperial))) {
             radioGroupUnits.check(R.id.radioButtonImperial);
         } else if (units.equals(getString(R.string.metric))) {
             radioGroupUnits.check(R.id.radioButtonMetric);
         }
 
-        // Load dark mode
         switchDarkMode.setChecked(sharedPreferences.getBoolean("darkMode", false));
 
         // Set click listener for the Save button
@@ -67,26 +59,20 @@ public class Settings extends AppCompatActivity {
                 // Save settings to SharedPreferences
                 SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                // Save name
                 editor.putString("name", editTextName.getText().toString());
-
-                // Save age
                 editor.putInt("age", Integer.parseInt(editTextAge.getText().toString()));
+                editor.putInt("weight", Integer.parseInt(editTextWeight.getText().toString()));
 
-                // Save sex
                 int selectedSexId = radioGroupSex.getCheckedRadioButtonId();
                 RadioButton selectedSexRadioButton = findViewById(selectedSexId);
                 editor.putString("sex", selectedSexRadioButton.getText().toString());
 
-                // Save units
                 int selectedUnitsId = radioGroupUnits.getCheckedRadioButtonId();
                 RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
                 editor.putString("units", selectedUnitsRadioButton.getText().toString());
 
-                // Save dark mode
                 editor.putBoolean("darkMode", switchDarkMode.isChecked());
 
-                // Apply the changes
                 editor.apply();
             }
         });
