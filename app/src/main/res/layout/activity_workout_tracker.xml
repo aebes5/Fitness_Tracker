@@ -66,7 +66,7 @@
             android:id="@id/content"
             layout="@layout/content_main2" />
     </LinearLayout>
-
+//
 
     <!-- Exercise Type Selection -->
 

@@ -50,7 +50,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
         });
 
     }
-
+//
     @Override
     public int getItemCount() {
         return foodItemList.size();

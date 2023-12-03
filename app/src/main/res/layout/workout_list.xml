@@ -36,7 +36,7 @@
         android:textColor="#123F9A"/>
 
 </LinearLayout>
-
+//
     <TextView
         android:id="@+id/textViewDelete"
         android:layout_width="match_parent"
