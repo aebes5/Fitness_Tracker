@@ -28,7 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="ADD WORKOUT" />
+                android:text="ADD WORKOUT"
+                />
 
         </TableRow>
 
@@ -51,7 +52,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="workout" />
+                android:text="" />
         </TableRow>
 
         <TableRow
