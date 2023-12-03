@@ -1,24 +1,13 @@
 package com.example.fitnesstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
-
 import com.example.fitnesstracker.databinding.ActivityAddFoodBinding;
-import com.example.fitnesstracker.databinding.ActivityAddWorkoutBinding;
 
 public class AddFood extends DialogFragment {
 
@@ -47,7 +36,6 @@ public class AddFood extends DialogFragment {
 
             }
         });
-
 
         return builder.create();
     }

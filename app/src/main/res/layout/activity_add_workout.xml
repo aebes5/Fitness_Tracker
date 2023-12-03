@@ -34,6 +34,10 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+                android:text="ADD WORKOUT"
+                />
+
+
         </TableRow>
 
         <TableRow
@@ -59,6 +63,9 @@
                 android:inputType="text"
                 android:text="workout"
                 android:fontFamily="serif"/>
+
+                android:text="" />
+
         </TableRow>
 
         <TableRow

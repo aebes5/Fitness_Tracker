@@ -15,7 +15,7 @@
             android:id="@+id/textMainMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_menu"
+            android:text="Fitness Tracker"
             android:textSize="50sp"
             android:paddingTop="30dp"
             android:paddingBottom="40dp"
