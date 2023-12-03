@@ -58,8 +58,14 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
 
     @Override
     public void onFoodClick(int position) {
-        // Handle food item click here
-        // You can add logic to handle the click event for a food item
+
+        ViewFoodItem viewFoodItem = new ViewFoodItem();
+
+        viewFoodItem.setFoodList(foodItemList);
+        viewFoodItem.setPosition(position);
+
+
+        viewFoodItem.show(getSupportFragmentManager(), "ViewFoodItem");
     }
 
     public void addFood(View view) {
@@ -73,6 +79,11 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
 
         // Save the updated food items list to SharedPreferences
         saveFoodItemsToSharedPreferences(foodItemList);
+    }
+    public void deleteFood(FoodItem foodItem)
+    {
+        foodItemList.remove(foodItem);
+        foodAdapter.notifyDataSetChanged();
     }
 
     public void openMainActivity() {

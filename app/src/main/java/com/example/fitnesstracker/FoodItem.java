@@ -2,9 +2,9 @@ package com.example.fitnesstracker;
 
 public class FoodItem {
     private String foodName;
-    private String calories;
+    private int calories;
 
-    public FoodItem(String foodName, String calories){
+    public FoodItem(String foodName, int calories){
         this.foodName = foodName;
         this.calories = calories;
     }
@@ -13,7 +13,15 @@ public class FoodItem {
         return foodName;
     }
 
-    public String getCalories(){
+    public int getCalories(){
         return calories;
+    }
+
+    public void setFoodName(String aName){
+        foodName = aName;
+    }
+
+    public void setCalories(int aCalories){
+        calories = aCalories;
     }
 }

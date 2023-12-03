@@ -24,7 +24,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
         void onFoodClick(int position);
     }
 
-    public void setOnContactClickListener(OnFoodClickListener listener) {
+    public void setOnFoodClickListener(OnFoodClickListener listener) {
         mListener = listener;
     }
 
@@ -42,7 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
         FoodItem foodItem = foodItemList.get(position);
 
         holder.textViewName.setText(foodItem.getFoodName());
-        holder.textViewCalories.setText(String.valueOf(foodItem.getCalories())); // Assuming getCalories() returns an int
+        holder.textViewCalories.setText(String.valueOf(foodItem.getCalories()));
     }
 
     @Override
