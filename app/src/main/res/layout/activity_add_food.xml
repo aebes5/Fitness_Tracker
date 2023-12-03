@@ -29,7 +29,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="ADD FOOD" />
+                android:text="ADD FOOD"
+                android:textColor="#C33004"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -38,20 +41,23 @@
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
             android:layout_marginTop="40dp">
-
+//
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name of Food:"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:fontFamily="serif"
+                android:textColor="#C33004"
+                android:text="Name of Food:" />
 
             <EditText
                 android:id="@+id/editTextName"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:fontFamily="serif"/>
         </TableRow>
 
         <TableRow
@@ -64,34 +70,44 @@
                 android:id="@+id/textViewCalories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:fontFamily="serif"
                 android:text="Calories:"
-                android:layout_marginRight="20dp"/>
+                android:textColor="#C33004" />
 
             <EditText
                 android:id="@+id/editTextCalories"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:fontFamily="serif"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="80dp">
 
             <Button
                 android:id="@+id/clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear" />
+                android:text="Clear"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/round_button"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="8dp"/>
 
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:text="Save"
+                android:background="@drawable/round_button"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="8dp"/>
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:fontFamily="serif"
+        android:textColor="#123F9A"/>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,20 +22,26 @@
         android:layout_width="208dp"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:fontFamily="serif"
+        android:textColor="#123F9A"
+        android:textStyle="bold"/>
     <TextView
         android:id="@+id/textViewDur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:fontFamily="serif"
+        android:textColor="#123F9A"/>
 
 </LinearLayout>
+//
     <TextView
         android:id="@+id/textViewDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="#225BCC" />
+        android:textColor="#559C02" />
 
 </LinearLayout>
