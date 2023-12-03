@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 }

@@ -21,7 +21,7 @@
             android:label="@string/title_activity_add_workout"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Settings"
             android:exported="false" />
         <activity
             android:name=".CalorieTracker"
