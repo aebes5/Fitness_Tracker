@@ -1,22 +1,16 @@
 package com.example.fitnesstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.fitnesstracker.databinding.ActivityAddFoodBinding;
-import com.example.fitnesstracker.databinding.ActivityAddWorkoutBinding;
 
 public class AddFood extends DialogFragment {
 
@@ -55,8 +49,8 @@ public class AddFood extends DialogFragment {
         String calories = binding.editTextCalories.getText().toString();
 
         FoodItem foodItem = new FoodItem(name, calories);
-        CalorieTrackerActivity calorieTrackerActivity = (CalorieTrackerActivity) getActivity();
-        calorieTrackerActivity.addFood(foodItem);
+        CalorieTracker calorieTracker = (CalorieTracker) getActivity();
+        calorieTracker.addFood(foodItem);
         dismiss();
     }
     public void clear(){

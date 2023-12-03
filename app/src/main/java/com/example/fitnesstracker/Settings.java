@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitnesstracker.databinding.ActivitySettingsBinding;
 
-public class SettingsActivity extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
     private ActivitySettingsBinding binding; // binding object
 

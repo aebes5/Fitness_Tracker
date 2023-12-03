@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
         TextView displayNameTextView = findViewById(R.id.textViewWelcome);
         String storedName = sharedPreferences.getString("name", "");
 
-        displayNameTextView.setText(!storedName.isEmpty()
-                ? "Welcome, " + storedName + "!"
-                : "Welcome!");
+        if (!storedName.isEmpty()) {
+            displayNameTextView.setText("Welcome, " + storedName + "!");
+        } else {
+            displayNameTextView.setText("Welcome!");
+        }
 
         //reference buttons
         binding.buttonWorkoutTracker.setOnClickListener(new View.OnClickListener() {
@@ -54,18 +56,18 @@ public class MainActivity extends AppCompatActivity {
 
     //open activities
     public void openWorkoutTrackerActivity() {
-        Intent intent = new Intent(this, WorkoutTrackerActivity.class);
+        Intent intent = new Intent(this, WorkoutTracker.class);
         startActivity(intent);
     }
 
 
     public void openCalorieTrackerActivity() {
-        Intent intent = new Intent(this, CalorieTrackerActivity.class);
+        Intent intent = new Intent(this, CalorieTracker.class);
         startActivity(intent);
     }
 
     public void openSettingsActivity() {
-        Intent intent = new Intent(this, SettingsActivity.class);
+        Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
     }
 }

@@ -1,33 +1,24 @@
 package com.example.fitnesstracker;
 
-import  androidx.fragment.app.FragmentActivity;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Bundle;
-import android.net.Uri;
-
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItemHolder>{
 
-    private WorkoutTrackerActivity workoutActivity;
+    private WorkoutTracker workoutActivity;
     private ArrayList<Workout> list;
 
-    public WorkoutAdapter (WorkoutTrackerActivity workoutActivity, ArrayList<Workout> list) {
+    public WorkoutAdapter(WorkoutTracker workoutActivity, ArrayList<Workout> list) {
         this.workoutActivity = workoutActivity;
-        this.list = list;
-
+        this.list = (list != null) ? list : new ArrayList<>(); // Initialize if null
     }
+
     @NonNull
     @Override
     public WorkoutAdapter.ListItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,25 +42,38 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
         });
 
     }
-    private void deleteItem(int position){
-        if(position == RecyclerView.NO_POSITION){}
-        else{
+    private void deleteItem(int position) {
+        if (position != RecyclerView.NO_POSITION) {
+            // Get the workout to be deleted
+            Workout deletedWorkout = list.get(position);
+
+            // Remove the workout from the list
             list.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, getItemCount());
+
+            // Update the list in SharedPreferences after deletion
+            updateWorkoutsInSharedPreferences(list);
+
+            // Show a message or perform any additional actions as needed
+            Toast.makeText(workoutActivity, "Workout deleted", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void updateWorkoutsInSharedPreferences(ArrayList<Workout> updatedWorkouts) {
+        // Update the workouts in SharedPreferences after deletion
+        workoutActivity.saveWorkoutsToSharedPreferences(updatedWorkouts);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return (list != null) ? list.size() : 0; // Return 0 if list is null
     }
 
     public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView textViewName;
         private TextView textViewType;
-
         private TextView textViewDur;
         private TextView textViewDelete;
 
@@ -86,8 +90,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
 
         public void onClick (View view){
             int pos =  getAdapterPosition();
-
-
         }
     }
 

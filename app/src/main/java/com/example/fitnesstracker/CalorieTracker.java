@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
 import com.example.fitnesstracker.databinding.ActivityCalorieTrackerBinding;
-
+import android.content.SharedPreferences;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class CalorieTrackerActivity extends AppCompatActivity implements FoodAdapter.OnFoodClickListener {
+public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnFoodClickListener {
 
     private ActivityCalorieTrackerBinding binding;
     private FoodAdapter foodAdapter;
@@ -28,7 +26,14 @@ public class CalorieTrackerActivity extends AppCompatActivity implements FoodAda
         binding = ActivityCalorieTrackerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        foodItemList = new ArrayList<>();
+        // Retrieve food items from SharedPreferences
+        foodItemList = getFoodItemsFromSharedPreferences();
+
+        // Initialize workouts ArrayList
+        if (foodItemList == null) {
+            foodItemList = new ArrayList<>();
+        }
+
         foodAdapter = new FoodAdapter(foodItemList, this);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -62,14 +67,40 @@ public class CalorieTrackerActivity extends AppCompatActivity implements FoodAda
         addFood.show(getSupportFragmentManager(), "");
     }
 
-
     public void addFood(FoodItem foodItem) {
         foodItemList.add(foodItem);
         foodAdapter.notifyDataSetChanged();
+
+        // Save the updated food items list to SharedPreferences
+        saveFoodItemsToSharedPreferences(foodItemList);
     }
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void saveFoodItems(ArrayList<FoodItem> foodItems) {
+        saveFoodItemsToSharedPreferences(foodItems);
+    }
+
+    private void saveFoodItemsToSharedPreferences(ArrayList<FoodItem> foodItems) {
+        SharedPreferences sharedPreferences = getSharedPreferences("foodItems", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Gson gson = new Gson();
+        String foodItemsJson = gson.toJson(foodItems);
+
+        editor.putString("foodItemsList", foodItemsJson);
+        editor.apply();
+    }
+
+    private ArrayList<FoodItem> getFoodItemsFromSharedPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("foodItems", MODE_PRIVATE);
+        String foodItemsJson = sharedPreferences.getString("foodItemsList", "");
+
+        Gson gson = new Gson();
+        Type type = new TypeToken<ArrayList<FoodItem>>(){}.getType();
+        return gson.fromJson(foodItemsJson, type);
     }
 }
