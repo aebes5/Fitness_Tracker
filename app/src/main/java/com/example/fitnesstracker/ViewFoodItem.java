@@ -1,14 +1,13 @@
 package com.example.fitnesstracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-import android.content.Intent;
-import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.fitnesstracker.databinding.ActivityViewFoodItemBinding;
 
@@ -20,6 +19,7 @@ public class ViewFoodItem extends DialogFragment {
     private int position;
     private ActivityViewFoodItemBinding binding;
 
+    private CalorieTracker calorieTracker;
 
     public void setFoodList(ArrayList<FoodItem> foodList) {
         this.foodList = foodList;
@@ -30,19 +30,16 @@ public class ViewFoodItem extends DialogFragment {
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public AlertDialog onCreateDialog(Bundle savedInstanceState) {
         binding = ActivityViewFoodItemBinding.inflate(LayoutInflater.from(getContext()));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(binding.getRoot());
 
-
         FoodItem foodItem = foodList.get(position);
-
 
         binding.textViewName.setText(foodItem.getFoodName());
         binding.textViewCalories.setText(String.valueOf(foodItem.getCalories()));
-
 
         binding.buttonDismiss.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,21 +48,6 @@ public class ViewFoodItem extends DialogFragment {
             }
         });
 
-
-  /*      binding.buttonEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditFood editDialog = new EditFoodDialogFragment();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("FOOD_NAME", foodItem.getFoodName());
-                bundle.putInt("FOOD_CALORIES", foodItem.getCalories());
-                editDialog.setArguments(bundle);
-
-                editDialog.show(getSupportFragmentManager(), "edit_food_dialog");
-            }
-        }); */
-
         binding.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +55,25 @@ public class ViewFoodItem extends DialogFragment {
                     foodList.remove(position);
                     CalorieTracker calorieTrackerActivity = (CalorieTracker) getActivity();
                     calorieTrackerActivity.deleteFood(foodItem);
+
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    int currentCalories = sharedPreferences.getInt("calories", 0);
+                    int caloriesToDelete = foodItem.getCalories();
+                    int updatedCalories = currentCalories - caloriesToDelete;
+
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("calories", updatedCalories);
+                    editor.apply();
+
+                    dismiss();
+                } else {
                     dismiss();
                 }
             }
         });
 
-
-
         return builder.create();
     }
+
+
 }

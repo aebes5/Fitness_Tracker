@@ -1,5 +1,7 @@
 package com.example.fitnesstracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +56,14 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
 
             // Update the list in SharedPreferences after deletion
             updateWorkoutsInSharedPreferences(list);
+
+            SharedPreferences sharedPreferences = workoutActivity.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            int workouts = sharedPreferences.getInt("workouts", 0);
+            int updatedWorkouts = workouts - 1;
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("workouts", updatedWorkouts);
+            editor.apply();
 
             // Show a message or perform any additional actions as needed
             Toast.makeText(workoutActivity, "Workout deleted", Toast.LENGTH_SHORT).show();

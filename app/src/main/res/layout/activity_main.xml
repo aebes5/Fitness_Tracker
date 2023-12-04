@@ -69,32 +69,63 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="16dp"
             android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/textViewWorkoutsThisWeek"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Workouts This Week: 0"
-            android:textSize="22sp"
-            android:layout_marginBottom="20dp"/>
-
-        <!-- Calories Burned Stats -->
-        <TextView
-            android:id="@+id/textViewCaloriesBurned"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textViewWorkoutsThisWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workouts This Week:"
+                android:textSize="22sp"
+                android:layout_marginBottom="20dp"/>
+            <TextView
+                android:id="@+id/workoutsThisWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="22sp"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories Burned: 0"
-            android:textSize="22sp"
-            android:layout_marginBottom="20dp"/>
+            android:orientation="horizontal">
 
-        <!-- Calories Gained Stats -->
-        <TextView
-            android:id="@+id/textViewCaloriesGained"
+            <TextView
+                android:id="@+id/textViewCaloriesBurned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="Calories Burned:"
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/caloriesBurned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text=""
+                android:textSize="22sp" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories Gained: 0"
-            android:textSize="22sp"/>
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textViewCaloriesGained"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calories Gained: "
+                android:textSize="22sp" />
+            <TextView
+                android:id="@+id/caloriesGained"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="22sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

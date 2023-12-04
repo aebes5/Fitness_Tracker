@@ -10,7 +10,11 @@ import com.example.fitnesstracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding; //binding object
+    private int currentCaloriesGained;
+
+    private int currentCaloriesBurned;
+    private int currentWorkoutsDone;
+    private ActivityMainBinding binding;
 
     //view binding enabled
     @Override
@@ -29,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             displayNameTextView.setText("Welcome!");
         }
+
+        currentCaloriesGained = sharedPreferences.getInt("calories", 0);
+        binding.caloriesGained.setText(String.valueOf(currentCaloriesGained));
+
+        currentCaloriesBurned = sharedPreferences.getInt("caloriesBurned", 0);
+        binding.caloriesBurned.setText(String.valueOf(currentCaloriesBurned));
+
+        currentWorkoutsDone = sharedPreferences.getInt("workouts", 0);
+        binding.workoutsThisWeek.setText(String.valueOf(currentWorkoutsDone));
 
         //reference buttons
         binding.buttonWorkoutTracker.setOnClickListener(new View.OnClickListener() {

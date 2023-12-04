@@ -84,6 +84,8 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
     {
         foodItemList.remove(foodItem);
         foodAdapter.notifyDataSetChanged();
+
+        saveFoodItemsToSharedPreferences(foodItemList);
     }
 
     public void openMainActivity() {
@@ -95,7 +97,7 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
         saveFoodItemsToSharedPreferences(foodItems);
     }
 
-    private void saveFoodItemsToSharedPreferences(ArrayList<FoodItem> foodItems) {
+    public void saveFoodItemsToSharedPreferences(ArrayList<FoodItem> foodItems) {
         SharedPreferences sharedPreferences = getSharedPreferences("foodItems", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -106,7 +108,7 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
         editor.apply();
     }
 
-    private ArrayList<FoodItem> getFoodItemsFromSharedPreferences() {
+    public ArrayList<FoodItem> getFoodItemsFromSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("foodItems", MODE_PRIVATE);
         String foodItemsJson = sharedPreferences.getString("foodItemsList", "");
 

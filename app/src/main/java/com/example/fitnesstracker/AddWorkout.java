@@ -1,5 +1,7 @@
 package com.example.fitnesstracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -53,6 +55,15 @@ public class AddWorkout extends DialogFragment {
         Workout workout = new Workout(name, type, duration);
         WorkoutTracker workoutTracker = (WorkoutTracker)getActivity();
         workoutTracker.addWorkoutToList(workout);
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        int currentWorkouts = sharedPreferences.getInt("workouts", 0);
+        int updatedWorkouts = currentWorkouts + 1;
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("workouts", updatedWorkouts);
+        editor.apply();
+
         dismiss();
     }
     public void clear(){

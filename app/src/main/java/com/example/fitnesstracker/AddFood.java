@@ -1,15 +1,19 @@
 package com.example.fitnesstracker;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 import com.example.fitnesstracker.databinding.ActivityAddFoodBinding;
 
 public class AddFood extends DialogFragment {
+
+
 
     private ActivityAddFoodBinding binding;
 
@@ -49,6 +53,18 @@ public class AddFood extends DialogFragment {
             FoodItem foodItem = new FoodItem(name, calories);
             CalorieTracker calorieTrackerActivity = (CalorieTracker) getActivity();
             calorieTrackerActivity.addFood(foodItem);
+
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+            int currentCalories = sharedPreferences.getInt("calories", 0);
+            int caloriesToAdd = foodItem.getCalories();
+            int updatedCalories = currentCalories + caloriesToAdd;
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("calories", updatedCalories);
+            editor.apply();
+
+
+
             dismiss();
         }
         else {
