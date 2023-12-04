@@ -59,13 +59,13 @@ public class CalorieTracker extends AppCompatActivity implements FoodAdapter.OnF
     @Override
     public void onFoodClick(int position) {
 
-//        ViewFoodItem viewFoodItem = new ViewFoodItem();
-//
-//        viewFoodItem.setFoodList(foodItemList);
-//        viewFoodItem.setPosition(position);
-//
-//
-//        viewFoodItem.show(getSupportFragmentManager(), "ViewFoodItem");
+        ViewFoodItem viewFoodItem = new ViewFoodItem();
+
+        viewFoodItem.setFoodList(foodItemList);
+        viewFoodItem.setPosition(position);
+
+
+        viewFoodItem.show(getSupportFragmentManager(), "ViewFoodItem");
     }
 
     public void addFood(View view) {

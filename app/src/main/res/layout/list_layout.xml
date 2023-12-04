@@ -22,14 +22,5 @@
         android:textSize="24sp"
         android:fontFamily="serif"
         android:textColor="#C33004"/>
-//
-    <TextView
-        android:id="@+id/textViewDelete2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="TextView"
-        android:textColor="#559C02" />
-
 
 </LinearLayout>

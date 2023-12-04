@@ -43,12 +43,6 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
 
         holder.textViewName.setText(foodItem.getFoodName());
         holder.textViewCalories.setText(String.valueOf(foodItem.getCalories()));
-        holder.textViewCalories.setText("Remove Food");
-
-        holder.textViewDelete.setOnClickListener(view -> {
-            deleteItem(position);
-        });
-
     }
 //
     @Override
@@ -74,13 +68,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
     public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textViewName;
         private TextView textViewCalories;
-        private TextView textViewDelete;
+
 
         public ListItemHolder(View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName); // Corrected reference
             textViewCalories = itemView.findViewById(R.id.textViewCalories); // Corrected reference
-            textViewDelete = itemView.findViewById(R.id.textViewDelete2);
             textViewCalories.setOnClickListener(this);
         }
 
