@@ -30,11 +30,25 @@ public class Settings extends AppCompatActivity {
         RadioGroup radioGroupSex = binding.radioGroupSex;
         RadioGroup radioGroupUnits = binding.radioGroupUnits;
 
-        // Load settings from SharedPreferences
+// Load settings from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         editTextName.setText(sharedPreferences.getString("name", ""));
-        
+
+        int age = sharedPreferences.getInt("age", -1);
+        if (age != -1) {
+            editTextAge.setText(String.valueOf(age));
+        } else {
+            editTextAge.setHint("Age");
+        }
+
+        int weight = sharedPreferences.getInt("weight", -1);
+        if (weight != -1) {
+            editTextWeight.setText(String.valueOf(weight));
+        } else {
+            editTextWeight.setHint("Weight");
+        }
+
         String sex = sharedPreferences.getString("sex", "");
         if (sex.equals(getString(R.string.male))) {
             radioGroupSex.check(R.id.radioButtonMale);
@@ -49,7 +63,7 @@ public class Settings extends AppCompatActivity {
             radioGroupUnits.check(R.id.radioButtonMetric);
         }
 
-        // Set click listener for the Save button
+// Set click listener for the Save button
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,9 +84,11 @@ public class Settings extends AppCompatActivity {
 
                 editor.apply();
 
+                // Show Toast message
                 Toast.makeText(getApplicationContext(), "User saved", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         // Set click listener for the Clear button
         binding.buttonClear.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +98,7 @@ public class Settings extends AppCompatActivity {
                 editTextName.setText("");
                 editTextAge.setText("");
                 editTextWeight.setText("");
-                radioGroupSex.clearCheck(); // Uncheck all radio buttons in radioGroupSex
+                radioGroupSex.clearCheck(); // Uncheck all radio butt   ons in radioGroupSex
                 radioGroupUnits.clearCheck(); // Uncheck all radio buttons in radioGroupUnits
 
                 // Clear SharedPreferences
@@ -93,7 +109,6 @@ public class Settings extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "User info reset", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         // Reference button
         binding.buttonMainMenu.setOnClickListener(new View.OnClickListener() {
