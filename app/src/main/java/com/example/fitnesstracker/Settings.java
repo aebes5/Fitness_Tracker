@@ -73,7 +73,7 @@ public class Settings extends AppCompatActivity {
                         || TextUtils.isEmpty(editTextAge.getText())
                         || TextUtils.isEmpty(editTextWeight.getText())
                         || radioGroupSex.getCheckedRadioButtonId() == -1
-                        || radioGroupUnits.getCheckedRadioButtonId() == -1) {
+                        ) {
 
                     // Show Toast message for incomplete fields
                     Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -90,10 +90,16 @@ public class Settings extends AppCompatActivity {
                     RadioButton selectedSexRadioButton = findViewById(selectedSexId);
                     editor.putString("sex", selectedSexRadioButton.getText().toString());
 
+                    // Check if units field is filled
                     int selectedUnitsId = radioGroupUnits.getCheckedRadioButtonId();
-                    RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
-                    editor.putString("units", selectedUnitsRadioButton.getText().toString());
-
+                    if (selectedUnitsId != -1) {
+                        RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
+                        editor.putString("units", selectedUnitsRadioButton.getText().toString());
+                    } else {
+                        // Handle the case where "units" is not filled (optional field)
+                        editor.remove("units");
+                    }
+                    
                     editor.apply();
 
                     // Show Toast message
@@ -101,9 +107,7 @@ public class Settings extends AppCompatActivity {
                 }
             }
         });
-
-
-
+        
         // Set click listener for the Clear button
         binding.buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
