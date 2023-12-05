@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitnesstracker.databinding.ActivitySettingsBinding;
 
@@ -27,7 +29,6 @@ public class Settings extends AppCompatActivity {
         EditText editTextWeight = binding.editTextWeight;
         RadioGroup radioGroupSex = binding.radioGroupSex;
         RadioGroup radioGroupUnits = binding.radioGroupUnits;
-        Switch switchDarkMode = binding.switchDarkMode;
 
         // Load settings from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
@@ -50,8 +51,6 @@ public class Settings extends AppCompatActivity {
             radioGroupUnits.check(R.id.radioButtonMetric);
         }
 
-        switchDarkMode.setChecked(sharedPreferences.getBoolean("darkMode", false));
-
         // Set click listener for the Save button
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,11 +70,32 @@ public class Settings extends AppCompatActivity {
                 RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
                 editor.putString("units", selectedUnitsRadioButton.getText().toString());
 
-                editor.putBoolean("darkMode", switchDarkMode.isChecked());
-
                 editor.apply();
+
+                Toast.makeText(getApplicationContext(), "User saved", Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Set click listener for the Clear button
+        binding.buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear UI fields
+                editTextName.setText("");
+                editTextAge.setText("");
+                editTextWeight.setText("");
+                radioGroupSex.clearCheck(); // Uncheck all radio buttons in radioGroupSex
+                radioGroupUnits.clearCheck(); // Uncheck all radio buttons in radioGroupUnits
+
+                // Clear SharedPreferences
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+
+                Toast.makeText(getApplicationContext(), "User info reset", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         // Reference button
         binding.buttonMainMenu.setOnClickListener(new View.OnClickListener() {
