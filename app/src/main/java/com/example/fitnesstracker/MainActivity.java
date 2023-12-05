@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             displayNameTextView.setText("Welcome!");
         }
 
-        currentCaloriesGained = sharedPreferences.getInt("calories", 0);
+        currentCaloriesGained = sharedPreferences.getInt("caloriesGained", 0);
         binding.caloriesGained.setText(String.valueOf(currentCaloriesGained));
 
         currentCaloriesBurned = sharedPreferences.getInt("caloriesBurned", 0);

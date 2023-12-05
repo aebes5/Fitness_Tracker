@@ -57,12 +57,12 @@ public class ViewFoodItem extends DialogFragment {
                     calorieTrackerActivity.deleteFood(foodItem);
 
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-                    int currentCalories = sharedPreferences.getInt("calories", 0);
+                    int currentCalories = sharedPreferences.getInt("caloriesGained", 0);
                     int caloriesToDelete = foodItem.getCalories();
                     int updatedCalories = currentCalories - caloriesToDelete;
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("calories", updatedCalories);
+                    editor.putInt("caloriesGained", updatedCalories);
                     editor.apply();
 
                     dismiss();
@@ -74,6 +74,5 @@ public class ViewFoodItem extends DialogFragment {
 
         return builder.create();
     }
-
 
 }
