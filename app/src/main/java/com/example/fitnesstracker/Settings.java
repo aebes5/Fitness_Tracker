@@ -34,9 +34,7 @@ public class Settings extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         editTextName.setText(sharedPreferences.getString("name", ""));
-        editTextAge.setText(String.valueOf(sharedPreferences.getInt("age", 0)));
-        editTextWeight.setText(String.valueOf(sharedPreferences.getInt("weight", 0)));
-
+        
         String sex = sharedPreferences.getString("sex", "");
         if (sex.equals(getString(R.string.male))) {
             radioGroupSex.check(R.id.radioButtonMale);
