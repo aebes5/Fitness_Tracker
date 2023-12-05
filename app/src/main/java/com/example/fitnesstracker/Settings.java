@@ -3,6 +3,7 @@ package com.example.fitnesstracker;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -30,7 +31,7 @@ public class Settings extends AppCompatActivity {
         RadioGroup radioGroupSex = binding.radioGroupSex;
         RadioGroup radioGroupUnits = binding.radioGroupUnits;
 
-// Load settings from SharedPreferences
+        // Load settings from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         editTextName.setText(sharedPreferences.getString("name", ""));
@@ -63,31 +64,44 @@ public class Settings extends AppCompatActivity {
             radioGroupUnits.check(R.id.radioButtonMetric);
         }
 
-// Set click listener for the Save button
+        // Set click listener for the Save button
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Save settings to SharedPreferences
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                // Validate that all fields are filled
+                if (TextUtils.isEmpty(editTextName.getText())
+                        || TextUtils.isEmpty(editTextAge.getText())
+                        || TextUtils.isEmpty(editTextWeight.getText())
+                        || radioGroupSex.getCheckedRadioButtonId() == -1
+                        || radioGroupUnits.getCheckedRadioButtonId() == -1) {
 
-                editor.putString("name", editTextName.getText().toString());
-                editor.putInt("age", Integer.parseInt(editTextAge.getText().toString()));
-                editor.putInt("weight", Integer.parseInt(editTextWeight.getText().toString()));
+                    // Show Toast message for incomplete fields
+                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
 
-                int selectedSexId = radioGroupSex.getCheckedRadioButtonId();
-                RadioButton selectedSexRadioButton = findViewById(selectedSexId);
-                editor.putString("sex", selectedSexRadioButton.getText().toString());
+                } else {
+                    // Save settings to SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                int selectedUnitsId = radioGroupUnits.getCheckedRadioButtonId();
-                RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
-                editor.putString("units", selectedUnitsRadioButton.getText().toString());
+                    editor.putString("name", editTextName.getText().toString());
+                    editor.putInt("age", Integer.parseInt(editTextAge.getText().toString()));
+                    editor.putInt("weight", Integer.parseInt(editTextWeight.getText().toString()));
 
-                editor.apply();
+                    int selectedSexId = radioGroupSex.getCheckedRadioButtonId();
+                    RadioButton selectedSexRadioButton = findViewById(selectedSexId);
+                    editor.putString("sex", selectedSexRadioButton.getText().toString());
 
-                // Show Toast message
-                Toast.makeText(getApplicationContext(), "User saved", Toast.LENGTH_SHORT).show();
+                    int selectedUnitsId = radioGroupUnits.getCheckedRadioButtonId();
+                    RadioButton selectedUnitsRadioButton = findViewById(selectedUnitsId);
+                    editor.putString("units", selectedUnitsRadioButton.getText().toString());
+
+                    editor.apply();
+
+                    // Show Toast message
+                    Toast.makeText(getApplicationContext(), "User saved", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
 
 
         // Set click listener for the Clear button
