@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fitness Tracker</string>
+    <string name="app_name">Wellness Wizard</string>
     <string name="calorie_counter">Calorie Counter</string>
     <string name="workout_tracker">Workout Tracker</string>
     <string name="settings">Settings</string>
@@ -34,6 +34,7 @@
     <string name="age">Age</string>
     <string name="name">Name</string>
     <string name="save">Save</string>
+    <string name="clear">Clear</string>
     <string name="title_activity_add_workout">AddWorkoutActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

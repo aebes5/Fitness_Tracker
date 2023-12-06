@@ -48,22 +48,20 @@ public class AddFood extends DialogFragment {
 
         if (!binding.editTextName.getText().toString().isEmpty() && !binding.editTextCalories.getText().toString().isEmpty()) {
             String name = binding.editTextName.getText().toString();
-            int calories = Integer.parseInt(binding.editTextCalories.getText().toString());
+            int caloriesGained = Integer.parseInt(binding.editTextCalories.getText().toString());
 
-            FoodItem foodItem = new FoodItem(name, calories);
+            FoodItem foodItem = new FoodItem(name, caloriesGained);
             CalorieTracker calorieTrackerActivity = (CalorieTracker) getActivity();
             calorieTrackerActivity.addFood(foodItem);
 
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-            int currentCalories = sharedPreferences.getInt("calories", 0);
+            int currentCalories = sharedPreferences.getInt("caloriesGained", 0);
             int caloriesToAdd = foodItem.getCalories();
             int updatedCalories = currentCalories + caloriesToAdd;
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("calories", updatedCalories);
+            editor.putInt("caloriesGained", updatedCalories);
             editor.apply();
-
-
 
             dismiss();
         }

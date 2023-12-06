@@ -37,7 +37,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
         holder.textViewName.setText(workout.getName());
         holder.textViewType.setText(workout.getType());
         holder.textViewDur.setText(workout.getDuration() + " minutes");
-        holder.textViewDelete.setText("Delete Workout");
+        holder.textViewDelete.setText("Delete");
 
         holder.textViewDelete.setOnClickListener(view -> {
             deleteItem(position);
