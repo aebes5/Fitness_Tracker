@@ -42,7 +42,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
 
         holder.textViewName.setText(workout.getName());
         holder.textViewType.setText(workout.getType());
-        holder.textViewDur.setText(String.valueOf(workout.getDuration()));
+        holder.textViewDur.setText(String.valueOf(workout.getDuration())+ " mins");
     }
 
     @Override

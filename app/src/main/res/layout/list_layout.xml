@@ -21,6 +21,6 @@
         android:text="TextView"
         android:textSize="24sp"
         android:fontFamily="serif"
-        android:textColor="#C33004"/>
+        android:textColor="#040100"/>
 
 </LinearLayout>
