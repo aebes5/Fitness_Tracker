@@ -50,13 +50,16 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#78B7E6"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Foods"
             android:textAlignment="center"
             android:textColor="#123F9A"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:shadowColor="#F5A623"
+            android:shadowDx="8"
+            android:shadowDy="8"
+            android:shadowRadius="6" />
     </LinearLayout>
 
     <include

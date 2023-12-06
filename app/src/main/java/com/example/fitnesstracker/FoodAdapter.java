@@ -42,7 +42,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
         FoodItem foodItem = foodItemList.get(position);
 
         holder.textViewName.setText(foodItem.getFoodName());
-        holder.textViewCalories.setText(String.valueOf(foodItem.getCalories()));
+        holder.textViewCalories.setText(String.valueOf(foodItem.getCalories())+ " cal.");
     }
 //
     @Override
