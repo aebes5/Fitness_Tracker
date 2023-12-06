@@ -118,8 +118,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:ems="10"
-                android:inputType="text"
-                android:text="25"
+                android:inputType="number"
+                android:text=""
                 android:fontFamily="serif"/>
 
         </TableRow>

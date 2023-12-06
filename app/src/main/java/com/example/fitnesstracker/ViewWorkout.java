@@ -63,15 +63,27 @@ public class ViewWorkout extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (position >= 0 && position < workoutList.size()) {
-                    workoutList.remove(position);
-                    WorkoutTracker workoutTracker1 = (WorkoutTracker) getActivity();
-                    workoutTracker1.deleteWorkout(workout);
-
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                     int currentWorkouts = sharedPreferences.getInt("workouts", 0);
                     int updatedWorkouts = currentWorkouts - 1;
 
+                    int currentCaloriesBurned = sharedPreferences.getInt("caloriesBurned", 0);
+                    int updatedCaloriesBurned;
+
+                    if (workout.getType().equals("Cardio")) {
+                        updatedCaloriesBurned = currentCaloriesBurned - (workout.getDuration() * 10);
+                    } else {
+                        // Assuming type is "Strength Training"
+                        updatedCaloriesBurned = currentCaloriesBurned - (workout.getDuration() * 5);
+                    }
+
+                    workoutList.remove(position);
+                    WorkoutTracker workoutTracker1 = (WorkoutTracker) getActivity();
+                    workoutTracker1.deleteWorkout(workout);
+
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("caloriesBurned", updatedCaloriesBurned);
                     editor.putInt("workouts", updatedWorkouts);
                     editor.apply();
 

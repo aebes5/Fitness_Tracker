@@ -76,6 +76,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ListItem
             textViewName.setOnClickListener(this);
             textViewType.setOnClickListener(this);
             textViewDur.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override

@@ -33,11 +33,9 @@ public class EditWorkout extends DialogFragment {
             workout = args.getParcelable("workout");
             if (workout != null) {
                 binding.editTextText.setText(workout.getName());
-                if (workout.getType() == "Cardio")
-                {
-                   binding.radioButton3.setChecked(true);
-                }
-                else {
+                if (workout.getType() == "Cardio") {
+                    binding.radioButton3.setChecked(true);
+                } else {
                     binding.radioButton4.setChecked(true);
                 }
 
@@ -69,27 +67,53 @@ public class EditWorkout extends DialogFragment {
             int duration = Integer.parseInt(binding.editTextText2.getText().toString());
             String type = "";
 
-            if(binding.radioButton3.isChecked()){
+            if (binding.radioButton3.isChecked()) {
                 type = "Cardio";
-            }
-            else if(binding.radioButton4.isChecked()){
+            } else if (binding.radioButton4.isChecked()) {
                 type = "Strength Training";
             }
+
 
             Workout newWorkout = new Workout(name, type, duration);
             WorkoutTracker workoutTracker = (WorkoutTracker) getActivity();
             workoutTracker.addWorkoutToList(newWorkout);
-            workoutTracker.deleteWorkout(workout);
-            if (workout != null) {
-                workoutTracker.deleteWorkout(workout);
 
+            if (workout != null) {
+
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                int currentCaloriesBurned = sharedPreferences.getInt("caloriesBurned", 0);
+
+                int previousWorkoutBurnedCalories;
+
+                if (workout.getType().equals("Cardio")) {
+                    previousWorkoutBurnedCalories = workout.getDuration() * 10;
+                } else {
+                    // Assuming type is "Strength Training"
+                    previousWorkoutBurnedCalories = workout.getDuration() * 5;
+                }
+
+                int newWorkoutBurnedCalories = 0;
+
+                if (type.equals("Cardio")) {
+                    newWorkoutBurnedCalories = duration * 10;
+                } else {
+                    // Assuming type is "Strength Training"
+                    newWorkoutBurnedCalories = duration * 5;
+                }
+
+                int updatedCaloriesBurned = currentCaloriesBurned - previousWorkoutBurnedCalories + newWorkoutBurnedCalories;
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("caloriesBurned", updatedCaloriesBurned);
+                editor.apply();
+
+                workoutTracker.deleteWorkout(workout);
             } else {
-                dismiss();
+                Toast.makeText(getContext(), "Make sure the fields aren't empty.", Toast.LENGTH_LONG).show();
             }
 
-            dismiss();
-        } else {
-            Toast.makeText(getContext(), "Make sure the fields aren't empty.", Toast.LENGTH_LONG).show();
+            workoutTracker.deleteWorkout(workout);
+
         }
     }
 }
