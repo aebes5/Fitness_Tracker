@@ -85,5 +85,9 @@
     <string name="button_delete">Delete</string>
     <string name="button_edit">Edit</string>
     <string name="button_dismiss">Dismiss</string>
+    <string name="title_activity_view_workout">ViewWorkout</string>
+    <string name="label_workout_name">Workout name:</string>
+    <string name="label_workout_type">Workout type:</string>
+    <string name="label_duration">Duration:</string>
 
 </resources>

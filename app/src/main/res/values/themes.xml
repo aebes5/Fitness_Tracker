@@ -8,4 +8,5 @@
     <style name="Theme.FitnessTracker" parent="Base.Theme.FitnessTracker">
         <!-- Customize your specific theme here. -->
     </style>
+
 </resources>

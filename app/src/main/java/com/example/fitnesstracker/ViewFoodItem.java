@@ -3,6 +3,7 @@ package com.example.fitnesstracker;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -69,6 +70,23 @@ public class ViewFoodItem extends DialogFragment {
                 } else {
                     dismiss();
                 }
+            }
+        });
+        binding.buttonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditFood editFood = new EditFood();
+
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("foodItem", (Parcelable) foodItem);
+                editFood.setArguments(bundle);
+
+
+                editFood.show(getParentFragmentManager(), "EditFood");
+
+                dismiss();
             }
         });
 

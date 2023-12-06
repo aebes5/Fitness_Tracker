@@ -13,6 +13,14 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".EditWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".ViewWorkout"
+            android:exported="false"
+            android:label="@string/title_activity_view_workout"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".EditFood"
             android:exported="false" />
         <activity

@@ -75,6 +75,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ListItemHolder
             textViewName = itemView.findViewById(R.id.textViewName); // Corrected reference
             textViewCalories = itemView.findViewById(R.id.textViewCalories); // Corrected reference
             textViewCalories.setOnClickListener(this);
+            textViewName.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override

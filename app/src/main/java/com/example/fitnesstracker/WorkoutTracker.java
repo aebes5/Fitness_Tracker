@@ -36,6 +36,7 @@ public class WorkoutTracker extends AppCompatActivity {
         }
 
         workoutAdapter = new WorkoutAdapter(this, workouts);
+        workoutAdapter.setOnWorkoutClickListener(this::onWorkoutClick);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         binding.content.recyclerView.setLayoutManager(layoutManager);
@@ -68,7 +69,17 @@ public class WorkoutTracker extends AppCompatActivity {
         return gson.fromJson(workoutsJson, type);
     }
 
-    //open activity
+
+    public void onWorkoutClick(int position) {
+
+        ViewWorkout viewWorkout = new ViewWorkout();
+
+        viewWorkout.setWorkoutList(workouts);
+        viewWorkout.setPosition(position);
+
+
+        viewWorkout.show(getSupportFragmentManager(), "ViewWorkout");
+    }
 //i
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
@@ -78,6 +89,13 @@ public class WorkoutTracker extends AppCompatActivity {
     public void addWorkout(View view){
         AddWorkout addWorkout = new AddWorkout();
         addWorkout.show(getSupportFragmentManager(), "");
+    }
+    public void deleteWorkout(Workout workout)
+    {
+        workouts.remove(workout);
+        workoutAdapter.notifyDataSetChanged();
+
+        saveWorkoutsToSharedPreferences(workouts);
     }
 
     public void addWorkoutToList(Workout workout) {
