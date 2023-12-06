@@ -37,6 +37,28 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#78B7E6"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Foods"
+            android:textAlignment="center"
+            android:textColor="#123F9A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <include
         android:id="@id/content"
         layout="@layout/content_main"
